@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator Tool </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="textarea">
+            <textarea name="text" id="text" class="Text" placeholder="Enter Text"></textarea>
+            <textarea name="trans" id="trans" class="Translation" placeholder="Translation"></textarea>
+        </div>
+        <div class="options">
+            <div class="first">
+                <i class="fa-solid fa-volume-high vol1"></i>
+                <i class="fa-solid fa-copy copy1"></i>
+                <div class="FromDiv">
+                    <select name="from" id="from" class="From">
+                        <option value="" selected disabled>Select language</option>
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="bn">Bengali</option>
+                    </select>
+                </div>
+            </div>
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+            <div class="second">
+                <div class="ToDiv">
+                    <select name="to" id="to" class="To">
+                        <option value="" selected disabled>Select language</option>
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="bn">Bengali</option>
+                    </select>
+                </div>
+                <i class="fa-solid fa-volume-high vol2"></i>
+                <i class="fa-solid fa-copy copy2"></i>
+            </div>
+        </div>
+        <div class="btn">
+            <button class="Transbtn"><i class="fa-solid fa-language"></i>Translate Text</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
