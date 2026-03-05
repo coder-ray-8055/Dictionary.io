@@ -72,10 +72,17 @@ async function TranslateText() {
 
     if (textValue === "") {
         alert("Enter text please")
+        return
     }
 
     if (fromLang == "" || toLang == "") {
         alert("Enter languages")
+        return
+    }
+
+    if (fromLang === toLang) {
+        translation.value = textValue;
+        return;
     }
 
     translation.value = "Translating..."
