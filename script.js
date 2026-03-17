@@ -34,7 +34,7 @@ function funcCopy1() {
 
     navigator.clipboard.writeText(text.value)
 
-    alert(`${text.value} copied`)
+    showToast();
 }
 function funcCopy2() {
     const translation = document.querySelector(".Translation")
@@ -44,7 +44,7 @@ function funcCopy2() {
 
     navigator.clipboard.writeText(translation.value)
 
-    alert(`${translation.value} copied`)
+    showToast();
 }
 
 volbtn1.addEventListener("click", speaktext1)
@@ -98,4 +98,14 @@ async function TranslateText() {
         translation.value = "Translation failed";
     }
 }
+const toast = document.getElementById("toast");
 
+function showToast() {
+    toast.classList.remove("hide");
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+        toast.classList.add("hide");
+    }, 2000);
+}
