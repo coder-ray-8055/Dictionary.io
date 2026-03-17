@@ -25,7 +25,7 @@ body {
     background-color: white;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .textarea {
@@ -154,7 +154,7 @@ body {
     border: none;
 }
 
-.btn button{
+.btn button {
     height: 45px;
     width: 930px;
     background: linear-gradient(to left, var(--blueMain), var(--pinkMain));
@@ -173,17 +173,107 @@ body {
     font-weight: 700;
 }
 
-.btn button:hover{
+.btn button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-.fa-language{
+.fa-language {
     color: white;
     padding-right: 35px;
     font-size: 20px;
 }
 
-.fa-language:hover{
+.fa-language:hover {
     color: white;
+}
+.toast {
+    min-width: 260px;
+    padding: 14px 18px;
+    border-radius: 14px;
+
+    background: linear-gradient(to right,
+            var(--blueMain),
+            var(--pinkMain));
+    backdrop-filter: blur(14px);
+
+    color: white;
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        inset 0 0 10px rgba(255, 255, 255, 0.05);
+
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+}
+
+.toast::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    padding: 1px;
+
+    background: linear-gradient(to right,
+            var(--blueMain),
+            var(--pinkMain));
+
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.toast i {
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(to right,
+            var(--blueMain),
+            var(--pinkMain));
+
+    color: white;
+    font-size: 14px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.toast.show {
+    animation: toastIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.toast.hide {
+    animation: toastOut 0.35s ease forwards;
+}
+
+@keyframes toastIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes toastOut {
+    to {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
 }
