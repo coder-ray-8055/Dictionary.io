@@ -7,6 +7,8 @@ const from = document.querySelector(".From")
 const to = document.querySelector(".To")
 const volbtn1 = document.querySelector(".vol1")
 const volbtn2 = document.querySelector(".vol2")
+const modeBtn = document.querySelector(".darkMode")
+const icon = document.querySelector("#icon")
 
 
 changeBtn.addEventListener("click", changetext)
@@ -108,4 +110,19 @@ function showToast() {
         toast.classList.remove("show");
         toast.classList.add("hide");
     }, 2000);
+}
+
+modeBtn.addEventListener("click" , changeTheme)
+
+function changeTheme(){
+    document.body.classList.toggle("dark-mode")
+
+    if(document.body.classList.contains("dark-mode")){
+        icon.classList.remove("fa-moon")
+        icon.classList.add("fa-sun")
+        icon.style.color = "black"
+    }else{
+        icon.classList.remove("fa-sun")
+        icon.classList.add("fa-moon")
+    }
 }
