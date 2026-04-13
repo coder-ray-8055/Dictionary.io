@@ -374,3 +374,7 @@ body.dark-mode .fa-arrow-right-arrow-left:hover {
         transform: translateY(-20px) scale(0.95);
     }
 }
+
+.fa-arrow-right-arrow-left {
+    transition: transform 0.4s ease;
+}

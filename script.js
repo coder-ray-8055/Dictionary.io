@@ -13,6 +13,14 @@ const icon = document.querySelector("#icon")
 
 changeBtn.addEventListener("click", changetext)
 
+let angle = 0;
+
+changeBtn.addEventListener("click", () => {
+    angle += 180;
+    changeBtn.style.transform = `rotate(${angle}deg)`;
+    changetext();
+})
+
 function changetext() {
     textVal = text.value
     transVal = translation.value
@@ -73,12 +81,12 @@ async function TranslateText() {
     const toLang = to.value
 
     if (textValue === "") {
-        alert("Enter text please")
+        showtoast("Enter text please", "info")
         return
     }
 
     if (fromLang == "" || toLang == "") {
-        alert("Enter languages")
+        showtoast("Enter languages", "success")
         return
     }
 
@@ -96,7 +104,7 @@ async function TranslateText() {
 
         translation.value = data.responseData.translatedText;
     }
-    catch(err){
+    catch (err) {
         translation.value = "Translation failed";
     }
 }
@@ -112,17 +120,43 @@ function showToast() {
     }, 2000);
 }
 
-modeBtn.addEventListener("click" , changeTheme)
+modeBtn.addEventListener("click", changeTheme)
 
-function changeTheme(){
+function changeTheme() {
     document.body.classList.toggle("dark-mode")
 
-    if(document.body.classList.contains("dark-mode")){
+    if (document.body.classList.contains("dark-mode")) {
         icon.classList.remove("fa-moon")
         icon.classList.add("fa-sun")
         icon.style.color = "black"
-    }else{
+    } else {
         icon.classList.remove("fa-sun")
         icon.classList.add("fa-moon")
     }
+}
+
+function showtoast(message, type = "success") {
+    const container = document.querySelector(".toast-container");
+
+    const toast = document.createElement("div");
+    toast.classList.add("toast", type);
+
+    toast.innerHTML = `
+        <span>${message}</span>
+    `;
+
+    container.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add("show");
+    }, 10);
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+        toast.classList.add("hide");
+
+        setTimeout(() => {
+            toast.remove();
+        }, 350);
+    }, 3000);
 }
